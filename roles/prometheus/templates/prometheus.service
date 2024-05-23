@@ -3,6 +3,7 @@ Description = prometheus server Service
 
 [Service]
 User=bin
+WorkingDirectory=/home/someuser
 ExecStart=/opt/prometheus-{{ version }}.linux-amd64/prometheus
 SyslogIdentifier=prometheus
 
