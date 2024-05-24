@@ -35,7 +35,7 @@ resource "aws_iam_role" "role" {
   })
 
   inline_policy {
-    name = "${var.tool_name}_inline_policy"
+    name = "${var.tool_name}-inline-policy"
 
     policy = jsonencode({
       Version = "2012-10-17"
