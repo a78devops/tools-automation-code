@@ -50,7 +50,7 @@ resource "aws_iam_role" "role" {
   }
 
   tags = {
-    name = "${var.tool_name}-role"
+    Name = "${var.tool_name}-role"
   }
 }
 
