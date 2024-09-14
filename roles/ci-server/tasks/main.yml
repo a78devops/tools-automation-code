@@ -17,7 +17,11 @@
 - name: Install Dependencies
   ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
 
-## Install runner we will take manual
-#- name: Install Runner
+- name: Install Runner
+  ansible.builtin.shell: ./config.sh --unattended --url https://github.com/a78devops --token {{secrets.GITHUB_RUNNER_TOKEN}}
+  args:
+    chdir: /home/ec2-user/github-runner
+  become_user: ec2-user
+
 
 
