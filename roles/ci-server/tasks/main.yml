@@ -17,8 +17,13 @@
 - name: Install Dependencies
   ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
 
+- name: Start Runner
+  ansible.builtin.shell: ./svc.sh uninstall
+  args:
+    chdir: /home/ec2-user/github-runner
+
 - name: Install Runner
-  ansible.builtin.shell: ./config.sh remove --token BHDSEO727BK667LLYZRB6CLG4VZFQ; ./config.sh --unattended --replace --url https://github.com/a78devops --token {{secrets.GITHUB_RUNNER_TOKEN}}
+  ansible.builtin.shell: ./config.sh remove --token {{secrets.GITHUB_RUNNER_TOKEN}}; ./config.sh --unattended --replace --url https://github.com/a78devops --token {{secrets.GITHUB_RUNNER_TOKEN}}
   args:
     chdir: /home/ec2-user/github-runner
   become_user: ec2-user
@@ -28,5 +33,15 @@
   args:
     chdir: /home/ec2-user/github-runner
 
+- name: disable default nodejs version module
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: enable nodejs module for V20
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: install nodejs
+  ansible.builtin.dnf:
+    name: nodejs
+    state: installed
 
 
