@@ -36,7 +36,7 @@
 - name: disable default nodejs version module
   ansible.builtin.shell: dnf module disable nodejs -y
 
-- name: enable nodejs module for V20
+- name: Enable Nodejs module for V20
   ansible.builtin.shell: dnf module disable nodejs -y
 
 - name: install nodejs
