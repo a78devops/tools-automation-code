@@ -3,7 +3,7 @@
 
 - name: Copy repo file
   ansible.builtin.templates:
-    url: jfrog.repo
+    src: jfrog.repo
     dest: /etc/yum.repos.d/jfrog-artifactory-rpms.repo
 
 - name: Install Jfrog
